@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triangulo de Sierpinski</title>
+
+    <script src="trianguloSierpinski.js"></script>
+  </head>
+  <style>
+    main {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    p {
+      font-weight: bold;
+      display: inline-block;
+    }
+    .divSlider {
+      text-align: center;
+    }
+    .divInfo p {
+      display: block;
+      line-height: 0%;
+    }
+  </style>
+  <body onload="main()">
+    <nav>
+      <div class="divInfo">
+        <p>Sierpinski Triangle - Rodrigo Ponce </p>
+      </div>
+      <div class="divSlider">
+        <input
+          id="slider"
+          type="range"
+          min="0"
+          max="10"
+          step="1"
+          value="0"
+          style="width: 500px"
+        />
+        <div id="slider">
+          <p>Value:</p>
+          <p id="sliderValue" class="sliderValue">0</p>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <canvas id="htmlCanvas" width="600" height="600"></canvas>
+    </main>
+  </body>
+</html>
