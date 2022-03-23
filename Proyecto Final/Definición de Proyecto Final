@@ -1,0 +1,14 @@
+Requerimientos Funcionales 
+
+Se permitirá elegir entre 2 distintos tipos de sudadera
+Se permitirá elegir entre una gran variedad de colores
+Se permitirá elegir entre una gran variedad de tipos de fuente para el texto.
+Se permitirá ir visualizando los cambios en la sudadera. el 
+Se permitirá obtener un precio final.
+Se permitirá visualizar el resultado final de la sudadera. 
+Se permitirá ingresar un correo electrónico para recibir el resultado final de la sudadera y el precio.
+
+Descripción del programa
+
+El usuario visualizará un espacio en el cual será capaz de moverse por medio de un personaje, el cual se visualizará en tercera persona. El espacio tendrá varios caminos marcados para que el personaje los siga. Estos caminos lo llevarán a distintos lugares que le ayudarán a personalizar una sudadera. 
+El primer camino lo llevará a un lugar donde encontrará dos sudaderas de diferentes materiales. Al seguir el camino, llegará a un lugar donde seleccionará el color de su sudadera. Después de elegir un color, seguirá el camino hasta llegar a un lugar donde podrá elegir la fuente de texto que quiera poner en su sudadera. Una vez elegida la fuente, seguirá el camino hasta el lugar donde pueda agregar una imagen predeterminada. Por último, llegará a la meta donde deberá ingresar su correo electrónico para recibir una imagen del diseño final de la sudadera y el precio.
