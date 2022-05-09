@@ -1,1 +1,14 @@
+Utilizando Three JS implementa un brazo de robot con las siguientes características:
 
+El brazo tiene que tener un hombro, muñeca, codo, brazo, y antebrazo. 
+La geometría de las uniones (hombro, codo, muñeca) pueden ser cubos sencillos. Aplica una escala adecuada para que no se vean más grandes que las extremidades.
+Las extremidades (brazo, antebrazo) pueden ser poliedro regular escalado.
+El brazo va a tener las siguientes restricciones de movimiento (Considera un rango de valores para que el movimiento de las diferentes partes sea similar al real):
+El hombro puede rotar con respecto a dos ejes.
+El codo puede rotar con respecto a un eje.
+El antebrazo puede rotar con respecto a un eje.
+La muñeca puede rotar con respecto a un eje.
+La mano puede rotar con respecto a dos ejes.
+Considera la jerarquía de transformaciones del brazo. Por ejemplo, si rota el hombro, todas las demás partes del brazo rotan. Si rota la muñeca, solo la mano rota con ella.
+Para controlar el brazo, puedes utilizar sliders de HTML, o utilizar dat.gui (Enlaces a un sitio externo.).
+La siguiente figura muestra un ejemplo de un brazo controlado por dat.gui.
