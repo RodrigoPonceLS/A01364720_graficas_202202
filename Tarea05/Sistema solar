@@ -1,1 +1,11 @@
+Crea un sistema solar completo con las siguientes restricciones:
 
+Crea 8 planetas (y plutón), con sus respectivas lunas, el sol, y el cinturón de asteroides.
+Los planetas, lunas, y el sol se pueden crear como esferas.
+El sol es la fuente de luz de la escena. Incluye una luz que permita esto. Revisa la documentación de threejs (Enlaces a un sitio externo.) para revisar los tipos de luces que existen, y elige una adecuada.
+Los planetas y lunas tienen que tener su propia rotación.
+Las lunas tienen que rotar al rededor de los planetas, y los planetas tienen que rotar al rededor del sol.
+Dibuja las orbitas de cada planeta.
+Cada elemento tiene que tener su propio material, textura, y maps de normales y bump (de existir). La mayoría de las texturas las pueden encontrar en: http://planetpixelemporium.com/,  (Enlaces a un sitio externo.)http://www.celestiamotherlode.net/ (Enlaces a un sitio externo.) (Enlaces a un sitio externo.), https://www.solarsystemscope.com/textures/ (Enlaces a un sitio externo.)
+Investiga cómo funciona el orbit controller de three.js e intégralo en la escena.
+Los asteroides tienen que ser modelos 3D. Revisa páginas como https://www.cgtrader.com/,  (Enlaces a un sitio externo.) https://free3d.com/, (Enlaces a un sitio externo.) o https://www.turbosquid.com/Search/3D-Models/free (Enlaces a un sitio externo.) para encontrar modelos 3D.
