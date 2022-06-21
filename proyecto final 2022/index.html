@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" class="h-screen min-h-screen touch-manipulation">
+	<head>
+		<title>Proyecto Final / Rodrigo Ponce de Leon - A01364720</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" /></script>
+		<script src="libs/three.js/three.min.js"></script>
+		<script src="libs/three.js/loaders/inflate.min.js"></script>
+		<script src="libs/three.js/loaders/FBXLoader.js"></script>
+		<script src="libs/tween.js/tween.js"></script>
+		<script src="canvas.js"></script>
+		<script src="handlers.js"></script>
+		<script type="text/javascript">
+			$(document).ready(
+				function() {	
+					let canvas = document.getElementById("canvas");
+					canvas.width = window.innerWidth;
+					canvas.height = window.innerHeight;
+					main(canvas);
+				}
+			);
+		</script>
+		<link rel="stylesheet" href="main.css" />
+	</head>
+	<body class="h-full min-h-full">
+		<div id="root" class="relative w-screen h-screen">
+			<div class="relative w-full h-full">
+				<header class="fixed top-0 left-0 z-40 w-screen h-14">
+					<nav class="w-full h-full flex items-center px-5">
+						<img 
+							src="https://upload.wikimedia.org/wikipedia/commons/4/47/Logo_del_ITESM.svg"
+							class="h-10"
+						/>
+						<section 
+							class="flex flex-1 items-center justify-end space-x-4 lg:space-x-8"
+						>
+							<button
+								id="infoBtn"
+								class="text-sm font-medium"
+							>
+								Tutorial
+							</button>
+							<button
+								id="debug"
+								class="text-sm font-medium"
+							>/Debug
+                        </button>
+                        <button 
+                            id="soundBtn"
+                            class="text-sm font-medium"
+                        >
+
+                        >
+
+								
+								Prender Sonido
+							</button>
+						</section>
+					</nav>
+				</header>
+				<section 
+					id="controls" 
+					class="fixed inset-0 z-30 w-screen h-screen"
+				>
+					<section
+						id="mainMenu" 
+						class="w-full mt-14 py-24 px-5 flex flex-col items-center justify-center space-y-6 text-center"
+					>
+						<h1 class="text-3xl md:text-5xl lg:text-7xl font-bold">
+							HERCULES
+						</h1>
+						<p class="text-lg font-medium pb-5">
+							Aprende logica basica ayudando a Hercules a cruzar!
+						</p>
+						<button
+							id="startGame"
+							disabled
+							class="h-12 px-6 rounded-full bg-blue-800/90 text-white font-medium text-base"
+						>
+							Cargando...
+						</button>
+					</section>
+					<section 
+						id="dragAndDrop"
+						class="fixed z-40 bottom-0 left-0 w-full p-5 hidden items-center flex-col justify-center space-y-5"
+					>
+						<div
+							id="dropzoneContainer"
+							class="h-16 w-full max-w-lg flex items-center"
+						>
+							<div
+								id="dropzone"
+								class="flex w-full max-w-lg h-full border-dashed border-2 border-slate-400 rounded-xl p-1 space-x-1 items-center"
+							>
+							</div>
+						</div>
+						<div
+							id="draggables"
+							class="flex w-full max-w-lg h-full space-x-1 flex-wrap space-x-3"
+						></div>
+						<button
+							id="playTurn"
+							disabled
+							class="h-12 w-full max-w-lg px-6 rounded-full bg-blue-800/90 text-white font-medium text-base"
+						>
+							Correr!
+						</button>
+					</section>
+					<section 
+						id="levelComplete" 
+						class="w-full mt-14 py-24 px-5 flex flex-col items-center justify-center space-y-6 text-center"
+					>
+						<h1 class="text-3xl md:text-5xl lg:text-7xl font-bold">Eso! Nivel Completado</h1>
+						<p class="text-lg font-medium pb-5">Vamos al siguiente nivel!</p>
+						<button
+							id="nextLevel"
+							class="h-12 px-6 rounded-full bg-blue-800/90 text-white font-medium text-base"
+						>
+							Siguiente Nivel
+						</button>
+					</section>
+					<section
+						id="endMenu"
+						class="w-full mt-14 py-24 px-5 flex flex-col items-center justify-center space-y-6 text-center"
+					>
+						<h1 class="text-3xl md:text-5xl lg:text-7xl font-bold">Fin!</h1>
+						<p class="text-lg font-medium pb-5">Gracias por jugar!</p>
+						<p class="text-xl font-bold pb-5 text-blue-700">Creado por Rodrigo Ponce de Leon - A01364720</p>
+						<p class="text-xl font-bold pb-5 text-blue-700">Graficos computacionales 2022</p>
+						<p class="text-xl font-bold pb-5 text-blue-700">Proyecto Final</p>
+					</section>
+				</section>
+				<canvas id="canvas" class="relative w-full h-full flex" />
+			</div>
+			<div
+				id="instructionsModal"
+				class="fixed p-5 inset-0 w-full h-full hidden items-center justify-center bg-black/50 backdrop-blur z-50"
+			>
+				<div
+					id="modal"
+					class="bg-white p-5 rounded-xl flex flex-col space-y-10"
+				>
+					<div class="max-w-md flex flex-col space-y-2 text-center">
+						<h1
+							class="text-3xl font-bold pb-5"
+						>
+							Ayuda a Hercules a llegar al ultimo bloque!
+						</h1>
+						<p>- Haz clic en la flecha que apunta a la direccion a la que deseas ir.</p>
+						<p>- Arrastra la flecha al recuadro en blanco.</p>
+						<p>- Haz click en el botón "Correr!" y mira a Hercules avanzar!</p>
+					</div>
+					<button
+						id="closeModal"
+						class="h-12 px-6 rounded-full bg-blue-800/90 text-white font-medium text-base"
+					>
+						Vamos!
+					</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
